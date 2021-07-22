@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -32,7 +33,12 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        // 
-        return back();
+        // auth()->attempt($request->only('email', 'password'));
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            return redirect()->route('dashboard');
+        }else{
+            return back();
+        }
+        
     }
 }
