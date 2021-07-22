@@ -11,6 +11,7 @@
 <body class="bg-gray-200">
 
     <nav class="p-6 bg-white flex justify-between mb-6">
+        @auth
         <ul class="flex items-center">
             <li>
                 <a href="{{route('home')}}" class="p-3">Home</a>
@@ -22,7 +23,8 @@
                 <a href="{{route('post')}}" class="p-3">Post</a>
             </li>
         </ul>
-
+        @endauth
+        
         <ul class="flex items-center">
             @auth
                 <li>

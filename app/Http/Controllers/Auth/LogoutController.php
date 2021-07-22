@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Logout extends Controller
+class LogoutController extends Controller
 {
     //
     public function store(){
-        Auth::logout();        
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

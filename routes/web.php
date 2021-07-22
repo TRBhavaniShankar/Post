@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DashboadController;
 
@@ -29,6 +31,6 @@ Route::post('/register', [RegisterController::class,'store']);
 Route::get('/login', [LoginController::class,'index'])->name('login');
 Route::post('/login', [LoginController::class,'store']);
 
-Route::get('/logout', [LoginController::class,'store']);
+Route::get('/logout', [LogoutController::class,'store'])->name('logout');
 
 Route::get('/post', [PostController::class,'index'])->name('post');
