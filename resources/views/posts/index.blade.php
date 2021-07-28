@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
-            <form action="{{route('post')}}" method="post" class="mb-4">
+            <form action="{{route('posts')}}" method="post" class="mb-4">
                 @csrf
                 <label for="body" class="sr-only">Body</label>
                 <textarea name="body" id="body" cols="30" rows="4" class="bg-gray-100 border-2 w-full p-4 wounded-lg
@@ -26,12 +26,8 @@
             @if ($posts->count())
 
                 @foreach ($posts as $item)
-                    <div class="mb-4">
-                        <a href="" class="font-bold"> {{$item->user->name}} <span class="text-gray-600 text-sm">{{$item->created_at}}</span></a>
-                        <p class="mb-2">{{$item->body}}</p>
-                    </div>
+                    <x-post :item="$item"/>
                 @endforeach
-
                 {{$posts->links()}}
 
             @else

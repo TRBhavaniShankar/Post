@@ -22,7 +22,7 @@
             </li>
             @endauth
             <li>
-                <a href="{{route('post')}}" class="p-3">Post</a>
+                <a href="{{route('posts')}}" class="p-3">Post</a>
             </li>
         </ul>
         

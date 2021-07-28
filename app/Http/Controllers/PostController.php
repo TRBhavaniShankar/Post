@@ -11,7 +11,7 @@ class PostController extends Controller
     //
     public function index(){
 
-        $posts = Post::paginate(2);
+        $posts = Post::latest()->with(['user', 'likes'])->paginate(20);
 
         return view('posts.index',[
             'posts' => $posts
@@ -24,11 +24,6 @@ class PostController extends Controller
            'body' => 'required'
         ]);
 
-        // Post::create([
-        //     'user_id' => auth()->id(),
-        //     'body' => $request->body
-        // ]);
-
         $request->user()->posts()->create([
             'body' => $request->body
         ]);
@@ -36,4 +31,11 @@ class PostController extends Controller
         return back();
 
     }
+
+    public function destroy(Post $post, Request $request){
+        $this->authorize('delete', $post);
+        $post->delete();
+        return back();
+    }
+
 }
