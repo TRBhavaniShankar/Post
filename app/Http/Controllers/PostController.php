@@ -8,6 +8,10 @@ class PostController extends Controller
 {
     //
     public function index(){
-        return view('post');
+        return view('posts.index');
+    }
+
+    public function create(Request $request){
+        
     }
 }
